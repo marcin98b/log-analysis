@@ -1,0 +1,27 @@
+from sklearn.preprocessing import KBinsDiscretizer
+
+# Dyskretyzacja kolumn na szeregi - nowe kolumny binarne
+
+# Inicjalizacja transformera
+transformer = KBinsDiscretizer(encode='onehot-dense', n_bins=2)
+
+# Wybór kolumn do przetworzenia przez transformator (bez pierwszej kolumny)
+columns_to_transform = df.columns[1:]  # Wybieramy kolumny od drugiej do ostatniej
+
+# Przetwarzanie wybranych kolumn
+df_discret = pd.DataFrame(transformer.fit_transform(df[columns_to_transform]).astype(np.int8))
+
+# Utworzenie nowych nazw cech uwzględniających podział otrzymany przy dyskretyzacji:
+new_col_names = []
+for idx, lst in enumerate(transformer.bin_edges_):
+    for i in range(len(lst) - 1):
+        new_col_names.append(df.columns[idx+1] + ": " + str(round(lst[i], 4)) + " - " + str(round(lst[i+1], 4)))
+df_discret.columns = new_col_names
+
+
+df_discret = pd.concat([df.iloc[:, 0], df_discret], axis=1)
+
+# Wyrzucenie zdyskretyzowanych cech o zerowej wariancji:
+df_discret = df_discret.loc[:, df_discret.var() > 0]
+
+df_discret.info()
