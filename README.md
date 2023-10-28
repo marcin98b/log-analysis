@@ -22,6 +22,6 @@ Jupyter scripts and notebooks for analyzing the Online Stock Trading System (OST
 - Created notepad: clusteringMethods.
 
 ## Scripts used in
-- Borowiec, M. Master Thesis. Rzeszow University of Technology. Exploration of logs using data analytics and machine learning [PL .pdf](https://github.com/marcin98b/log-analysis/files/12887661/Badanie.logow.monografia.pdf)
 - Borowiec, M.; Piszko, R.; Rak, T. Knowledge Extraction and Discovery about Web System Based on the Benchmark Application of Online Stock Trading System. Sensors 2023, 23, 2274. https://doi.org/10.3390/s23042274
+- Borowiec, M.; Rak, T. Advanced Examination of User Behavior Recognition via Log Dataset Analysis of Web Applications Using Data Mining Techniques. Electronics 2023, 12, 4408. https://doi.org/10.3390/electronics12214408
 
